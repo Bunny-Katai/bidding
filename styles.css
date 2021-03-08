@@ -1,0 +1,47 @@
+
+.container {
+    display: flex;
+    flex-direction: column;
+    background-color: cadetblue;
+    width:  400px;
+    height: 400px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 200px;
+    margin-bottom: 200px;
+    margin-left: 600px;
+    border:rgb(7, 59, 61) 5px;
+    border-radius: 15px;
+}
+h2 {
+    color: white;
+}
+#arrBid {
+    width: 200px;
+    min-height: 25px;
+    background-color: white;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+p {
+    margin: 3px;
+}
+
+input {
+    margin-top: 15px;
+    width: 200px;
+    height: 20px;
+    border-radius: 8px;
+}
+
+button {
+    background-color:rgb(185, 119, 64);
+    color: white;
+    width: 100px;
+    height: 25px;
+    border-radius: 8px;
+}

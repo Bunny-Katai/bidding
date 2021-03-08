@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Bidding App</title>
+</head>
+<body onload="loadBids()">
+    <div class = "container">
+        <h2>BIDDING APP</h2>
+        <div id="arrBid"></div>
+        <div class="bid">
+            <input id="bid1" type="number">
+            <button id="bidButton1">Place Bid</button>
+            <br>
+        </div>
+
+        <div class="bid">
+            <input id="bid2" type="number">
+            <button id="bidButton2">Place Bid</button>
+            <br>
+        </div>
+    </div>
+
+    <script>
+        const bids = [];
+
+        document.getElementById('bidButton1').addEventListener('click', function() { addBid(document.getElementById('bid1').value) });
+        document.getElementById('bidButton1').addEventListener('click', function() { clearInput(document.getElementById('bid1')) });
+
+        document.getElementById('bidButton2').addEventListener('click', function() { addBid(document.getElementById('bid2').value) });
+        document.getElementById('bidButton2').addEventListener('click', function() { clearInput(document.getElementById('bid2')) });
+  
+        function loadBids() {
+            const loadedBids = getBids();
+            if (loadedBids) {
+                loadedBids.forEach(
+                    (bid) => {
+                        addBid(bid);
+                    }
+                );
+            }
+            console.log(getBids())
+        }
+
+        function addBid(bid) {
+            if (bid > 0) {
+                bids.push(bid);
+                const bidElement = document.createElement('P');
+                const bidNode =  document.createTextNode(bid);
+                bidElement.appendChild(bidNode);
+                document.getElementById('arrBid').appendChild(bidElement);
+                updateBids();
+            } else {
+                console.log('No bid submitted.');
+            }
+        }
+
+        function clearInput(input) {
+            input.value = '';
+        }
+
+        function updateBids() {
+            window.localStorage.clear();
+            window.localStorage.setItem('bids', JSON.stringify(bids));
+        }
+       
+        function getBids() {
+            return JSON.parse(window.localStorage.getItem('bids'));
+        }
+
+    </script>
+</body>
+</html>
